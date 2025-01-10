@@ -1,0 +1,33 @@
+# All git commands
+# initiate git
+git init
+
+# clone repo
+git clone "repo name"
+
+# git commit
+git add .
+git commit -m "Give comment"
+
+# create new branch
+git branch "branch name"
+
+# push to branch
+git push origin "branch name"
+
+
+# change to new repo
+git remote set-url origin https://github.com/charantejadvrs/mbue-chatbot.git
+
+# create new branch main
+git branch -M main
+
+# push to new branch main
+git push -u origin main
+
+# change branch to push
+git checkout new branch
+
+# to pull
+git pull origin main
+	

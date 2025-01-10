@@ -1,0 +1,6 @@
+what is the purpose of n-propanol alcohol when used in silicon hydrogels?
+What is the purpose of HEMA in silicon Hydrogels?
+Explain the impact of changing the curvature radius on the lens performance.
+I am experiencing a chromatic aberration in my lens design. what can I do to minimize it?
+Create a detailed formulation report for a silicone hydrogel contact lens with a DK of atleast 125, a modulus from 0.5-0.7 MPa and an acceptable IP.
+Exclude formulations that are already patented.
