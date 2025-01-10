@@ -1,0 +1,1530 @@
+/* Main layout */
+.App {
+  display: flex;
+  height: 100%;
+  /* flex-direction: row; */
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Allow overflow if needed */
+  /* overflow-y: auto; */
+}
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden; 
+}
+
+
+
+
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: hidden;
+  margin-top: 10px;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Chatbot container */
+.chat-window {
+  /* flex:1; */
+  /* position: relative;  */
+  width: 100%;
+  /* max-width: 1000px; */
+  /*max-width: 1000px; /* Ensures it doesn't exceed the container's width */
+  min-width: 30%; /* Optional: Prevents it from shrinking too much */
+  /* min-height: 20vh; */
+  height: 62.5%;
+  /* margin: 10 auto; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* border: 1px solid #ccc; */
+  /* padding: 10px; */
+  margin-bottom: 5px;
+  margin-top: 40px;
+  /* border-radius: 15px; */
+  background: linear-gradient(to top left, #e0e0e0, #ffffff); /* Gradient for margin area */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+  
+}
+
+.chatbot-container {
+  display: flex;
+  /* justify-content: top; */
+  align-items: flex-start; /* Vertically centers the chat window */
+  flex-direction: column; /* Stacks children vertically */
+  flex-wrap: wrap; /* Allows wrapping on small screens */
+  height: 100%;
+  width: 100%;
+  /* height: 100%; */
+  /* padding: 10px; */
+  box-sizing: border-box; /* Includes padding in width/height */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border: 4px solid #ccc;
+  border-color: blue;
+}
+
+.bottom-section {
+  height: 25%; /* Combined height of dropdown-container, chat-input, and default-options */
+  display: flex;
+  flex-direction: column; /* Stack the child elements vertically */
+  justify-content: flex-start; /* Align content to the bottom */
+  width: 100%; /* Ensure it takes up the full width */
+  box-sizing: border-box; /* Include padding in height calculation */
+  /* overflow: auto; */
+}
+
+/* .dropdown-container,
+.chat-input,
+.default-options {
+  width: 100%;
+
+  overflow: hidden; 
+} */
+
+/* .dropdown-container {
+  display: inline-block;
+  flex-direction: row;
+  gap: 20px;
+  width : 100%;
+  margin-bottom: 4px;
+  font-family: Arial, sans-serif; 
+  align-items: center; 
+  justify-content: center; 
+  border: 1px solid black;
+} */
+
+.dropdown-container {
+  display: flex;
+  flex-direction: row; /* Align elements vertically */
+  gap: 10px; /* Adjust gap to your preference */
+  align-items: center; /* Optional, to center-align items horizontally */
+  /* border: 1px solid black; */
+  justify-content: center;
+}
+
+.dropdown-only {
+  display: flex;
+  flex-direction: row; /* Align the children vertically */
+  justify-content: center; /* Center the items inside each container */
+  align-items: center; /* Ensure items are centered horizontally */
+  gap: 10px;  /* Space between elements */
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.slider-only-container {
+  display: flex;
+  flex-direction: row; /* Align the children vertically */
+  justify-content: center; /* Center the items inside each container */
+  align-items: center; /* Ensure items are centered horizontally */
+  gap: 2px;  /* Space between elements */
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* .dropdown-container label,
+.dropdown-container input,
+.dropdown-container span,
+.dropdown-container p {
+  margin-right: 10px;  
+} */
+
+.slider-only-container h2 {
+  margin-left: 20px;
+}
+
+/* .dropdown-container label {
+  font-size: 1rem; 
+  color: #333; 
+  font-weight: bold;
+  width : 100%;
+  text-align: center;
+}
+
+.dropdown-container select, .dropdown-container option {
+  font-size: 14px;
+  line-height: 1.2; 
+} */
+
+
+
+.chat-input {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+  font-size: 16px;
+  position : relative;
+  left : 30px;
+}
+
+.chat-input:focus {
+  border-color: #4a90e2;
+}
+
+/* Default options button styling */
+.default-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  position : relative;
+  left : 30px;
+  justify-content: center; /* Center the items inside each container */
+  align-items: center;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.option-button,
+.answer-button {
+  margin: 5px 0;
+}
+
+.user-message {
+  text-align: right;
+  background-color: #d1f1ff;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.bot-message {
+  text-align: left;
+  background-color: #f1f0f0;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  animation: blink 1s infinite step-start; /* Infinite blinking animation */
+  opacity: 0; /* Start with no visibility */
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s; /* Delay for the second dot */
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s; /* Delay for the third dot */
+}
+
+@keyframes blink {
+  0%, 20% {
+      opacity: 0; /* No visibility at the start and 20% into the animation */
+  }
+  50% {
+      opacity: 1; /* Fully visible at 50% */
+  }
+  100% {
+      opacity: 0; /* Back to no visibility */
+  }
+}
+
+input {
+  width: 240px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 16px;
+}
+
+
+
+.chatbot-title {
+  text-align: top;
+  font-size: 20px; /* Slightly larger for prominence */
+  color: #4a90e2; /* Elegant blue tone */
+  margin-bottom: 1px; /* More balanced spacing */
+  margin-top: 1px;
+  font-weight: bold; /* Adds emphasis */
+  /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
+  font-family: Arial, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  /*border-bottom: 2px solid #4a90e2; /* Decorative underline */
+  /*padding-bottom: 5px; /* Padding to complement underline */
+}
+
+
+
+/* Send button styling */
+.send-button {
+  width: 15%;
+  padding: 2px;
+  background: linear-gradient(to right, rgba(74, 144, 226, 0.8), rgba(41, 128, 185, 0.8));
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect for transparency */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  position : relative;
+  left : 30px;
+}
+
+.send-button:hover {
+  background: linear-gradient(to right, rgba(74, 144, 226, 1), rgba(41, 128, 185, 1));
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+.chat-space {
+  display: flex; /* Places items side by side */
+  align-items: center; /* Vertically centers the input and button */
+  /*justify-content: space-between; /* Adds space between items */
+  justify-content: center; /* Horizontally centers the input and button */
+  gap: 2px; /* Optional: Adds space between the input and button */
+  width: 100%; /* Ensures the container spans the available width */
+  margin-top: 5px; /* Adjusts spacing above the container */
+}
+
+
+
+.option-button {
+  flex: 0 1 auto;
+  padding: 2px;
+  background: linear-gradient(to right, rgba(225, 240, 255, 0.8), rgba(190, 220, 255, 0.8));
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  max-width: 250px; /* Sets a maximum width */
+  margin: 5px; /* Adds spacing between buttons */
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect for transparency */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  
+}
+
+.option-button:hover {
+  background: linear-gradient(to right, rgba(74, 144, 226, 0.9), rgba(90, 160, 255, 0.9));
+  color: #fff;
+  transform: scale(1.1); /* Slightly enlarges the button */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+
+/* Container styling */
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Light background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: Arial, sans-serif;
+}
+
+/* Label styling */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333; /* Darker text color for contrast */
+  font-weight: bold;
+}
+
+/* Dropdown styling */
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #555; /* Slightly darker text */
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+/* Dropdown focus effect */
+form select:focus {
+  border-color: #4a90e2; /* Blue border on focus */
+  outline: none;
+}
+
+/* Button styling */
+form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, rgba(74, 144, 226, 0.8), rgba(41, 128, 185, 0.8)); /* Gradient background */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover and other effects */
+  backdrop-filter: blur(5px); /* Enhances transparency with a subtle blur effect */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Button hover effect */
+form button:hover {
+  background: linear-gradient(to right, rgba(74, 144, 226, 1), rgba(41, 128, 185, 1)); /* More opaque gradient */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Optional spacing */
+form select, form button, form label {
+  margin-top: 10px;
+}
+
+/* Optional button styling */
+form button:active {
+  transform: scale(0.98); /* Small scale effect on click */
+}
+
+.bot-message img {
+  max-width: 600px;   /* You can adjust the maximum width */
+  max-height: 400px;  /* Optional: limit the height to prevent overflow */
+  width: 100%;
+  height: auto;
+}
+
+
+
+.flowchart-image {
+  max-width: 90%; /* Adjusts image width to be within 90% of the chat window */
+  max-height: none; /* Limit the max height to prevent it from being too tall */
+  min-height: 100px;
+  /*width: auto; /* Maintain aspect ratio */
+  /*height: auto; /* Maintain aspect ratio */
+  margin: 10px 0; /* Add spacing around the image */
+  border-radius: 15px; /* Optional: add rounded corners */
+  /*object-fit: contain; /* Ensure the image scales well within the max dimensions */
+}
+
+.download-link {
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.download-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.latex-inline {
+  font-family: 'KaTeX_Main', sans-serif;
+}
+
+.latex-block {
+  font-family: 'KaTeX_Main', sans-serif;
+  text-align: center;
+  margin: 10px 0;
+}
+
+body.modal-open {
+  overflow: hidden;  /* Prevents scrolling the page when the modal/chat window is open */
+}
+
+/* Add this to limit the size of LaTeX-rendered equations */
+.katex-display {
+  max-width: 100%; /* Prevent equations from exceeding the container width */
+  word-wrap: break-word; /* Allow line breaks if necessary */
+  overflow: hidden; /* Prevent overflow beyond the container */
+}
+.katex {
+  font-size: 1.2em; /* Adjust font size for readability */
+  white-space: nowrap; /* Ensure math content doesn't extend too much */
+}
+
+
+
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+
+
+
+/* Chat and PDF layout adjustment */
+/* .main-content .chat-window {
+  flex-grow: 1;
+} */
+
+
+
+.save-pdf-button {
+  position: absolute;
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  /* padding: 10px 20px; */
+  background-color: lightgrey;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  opacity: 60%;
+  z-index: 1000; /* Ensures the button is on top of other content */
+}
+
+.save-pdf-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+
+
+#dropdown {
+  /* width: 100%;  */
+  /* max-width: 400px;  */
+  padding: 2px; /* Adds space inside the dropdown */
+  font-size: 1rem; /* Medium font size */
+  border: 1px solid #ccc; /* Border with neutral color */
+  border-radius: 5px; /* Rounded corners */
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0); /* Subtle gradient */
+  color: #333; /* Neutral text color */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+#dropdown:hover {
+  border-color: #888; /* Darker border on hover */
+  background: linear-gradient(to bottom, #f9f9f9, #eaeaea); /* Slightly darker gradient */
+}
+
+#dropdown:focus {
+  outline: none; /* Removes the default focus outline */
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Glow effect on focus */
+}
+
+
+.image-preview-container {
+  margin-bottom: 2px;
+  /* right:50px; */
+  position: relative; /* Ensure child elements are positioned relative to this container */
+  display: inline-block; /* To prevent the container from stretching full width */
+}
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+}
+
+.pasted-image {
+  max-width: 100px;
+  max-height: 100px;
+  border: 1px solid #ccc; /* Optional: Add a border to the image for better visibility */
+  border-radius: 4px; /* Optional: Add rounded corners */
+}
+
+.cancel-button {
+  position: absolute;
+  top: 0px; /* Adjust spacing from the top edge */
+  right: 0px; /* Adjust spacing from the right edge */
+  background: rgba(255, 255, 255, 0.7); /* Slightly opaque background for better visibility */
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%; /* Optional: Circular button */
+  width: 10px; /* Set a fixed width */
+  height: 10px; /* Set a fixed height */
+  display: flex; /* Center the "✖" inside */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+}
+
+.cancel-button:hover {
+  background: rgba(255, 0, 0, 0.9); /* Change background on hover */
+  color: white; /* White text on hover */
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Translucent black background */
+  z-index: 1001; /* Ensure it overlays other elements */
+}
+
+.modal-content {
+  background: white; /* White background for the modal itself */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1002;
+}
+
+/* input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+} */
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+
+}
+
+.chat-widget {
+  position: fixed;
+  /* bottom: 10px; */
+  right: 0px;
+  bottom : 0;
+  z-index: 1000;
+  width: 45%;
+  height: 80%;
+  justify-content: flex-end;
+  /* height: 600px; */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: white;
+  transform-origin: bottom right; 
+  /* transform: scale(1); */
+  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+
+.chat-widget.full-screen {
+  position: fixed;
+  /* top: 0;
+  left: 0; */
+  /* right: 10px;
+  bottom: 10px; */
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 2000;
+  overflow-y: hidden;
+  transform-origin: bottom right; /* Anchor to bottom-right corner */
+  transform: scale(1); /* Ensure full-screen scale */  
+  transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+
+
+.widget-toggle-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  transform-origin: bottom right; /* Anchor to bottom-right corner */
+  transform: scale(1); /* Default scale */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Add hover effects */
+}
+
+.widget-container {
+  width: 100%;
+  height:100%;
+  /* height: 60%; */
+  background-color: #ffffff;
+  /* border: 20px solid #ccc; */
+  /* border-radius: 10px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  transform-origin: bottom right;
+  transform: scale(1); /* Default scale */
+  transition: all 0.4s ease-in-out; /* Smooth transition for resizing */
+}
+
+.chat-widget.full-screen .widget-container {
+  height: 100%;
+  width : 100%;
+  border-radius: 0px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: center; /* Space out header items evenly */
+  align-items: center; /* Center-align items vertically */
+  /* padding: 12px 16px; */
+  margin-bottom: 0px; /* Increased spacing below the header for visual clarity */
+  background-color: #f5f5f5; /* Light gray background for a clean look */
+  border-radius: 0px; /* Rounded edges to match modern design trends */
+  border-bottom: 2px solid #ddd; /* Add a subtle bottom border for separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  font-family: 'Arial', sans-serif; /* Use a clean, modern font */
+  /* font-size: 1.2rem;  */
+  color: #333; /* Dark gray text color for better contrast */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+
+/* Selection panel and PDF viewer placement outside the chat window */
+.selection-panel {
+  position: absolute;
+  left: 0px;  /* Adjust this value to move the panel closer or farther from the chat */
+  top: 0;
+  z-index: 1500; /* Ensure it's above other content */
+  background-color: #f9f9f9;
+  width: 300px; /* Adjust this width as necessary */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: 100vh; /* Ensures it takes the full height of the screen */
+  transition: transform 0.4s ease-in-out; /* Smooth sliding effect */
+}
+
+.pdf-viewer {
+  position: absolute;
+  left: -300px;  /* Adjust this value to move the panel closer or farther from the chat */
+  top: 0;
+  z-index: 1500; /* Ensure it's above other content */
+  background-color: #f9f9f9;
+  width: 30%; /* Adjust this width as necessary */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: 100vh; /* Ensures it takes the full height of the screen */
+  transition: transform 0.4s ease-in-out; /* Smooth sliding effect */
+}
+
+/* Hide selection panel and PDF viewer when in full-screen mode */
+.chat-widget.full-screen .selection-panel,
+.chat-widget.full-screen .pdf-viewer {
+  display: none;
+}
+
+/* Ensure visibility when not in full-screen mode */
+/* .chat-widget:not(.full-screen) .selection-panel,
+.chat-widget:not(.full-screen) .pdf-viewer {
+  display: block;
+} */
+
+/* If needed, adjust appearance of the selection panel and pdf viewer */
+/* .selection-panel {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+} */
+
+/* .pdf-viewer {
+  height: auto;
+  overflow: auto;
+} */
+
+
+.expand-shrink-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 10px; /* Adds a small gap to the left and right of the button */
+  display: flex;
+  align-items: center; /* Aligns icon and text vertically */
+  gap: 5px; /* Space between the icon and text */
+}
+
+.expand-shrink-btn:hover {
+  background-color: #218838; /* Darker green for hover effect */
+}
+
+.widget-toggle-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+}
+
+.widget-header {
+  padding: 5px;
+  font-size: 10px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  /* border-top-left-radius: 15px; */
+  /* border-top-right-radius: 15px; */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* .selection-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+  flex-wrap: wrap; 
+  gap: 1px; 
+  width: 100%; 
+} */
+
+.selection-panel select {
+  flex: 1; /* Makes dropdowns equal width */
+  margin-right: 5px;
+  min-width: 20px;
+  padding: 1px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* .pdf-viewer {
+  height: 300px; 
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+} */
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.widget-body {
+  flex: 1;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height : 100%;
+  padding: 1px;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 2000;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(5px); /* Optional: Add a blur effect for a frosted glass look */
+}
+
+.modal-content input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hide-pdf-btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  z-index: 10;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 1px;
+  padding: 1px 1px;
+  cursor: pointer;
+}
+
+.show-pdf-btn {
+  background-color: #28a745; /* Green color for the button */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Rounded corners for consistency */
+  padding: 5px 10px; /* Add some padding for better appearance */
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center; /* Align icon and text vertically */
+  gap: 5px; /* Space between the icon and text */
+  margin: 0 10px; /* Adds small gaps to the left and right of the button */
+}
+
+.show-pdf-btn:hover {
+  background-color: #218838; /* Slightly darker green for hover effect */
+}
+
+.show-pdf-btn-container {
+  text-align: center;
+  margin: 1px 0;
+}
+
+
+.hide-panel-btn,
+.show-panel-btn
+ {
+    margin: 1px 0;
+    padding: 1px 11px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+/* .pdf-viewer {
+    height: 300px; 
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    position: relative;
+} */
+
+/* .pdf-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+} */
+
+.show-panel-btn-container,
+.show-pdf-btn-container {
+    text-align: center;
+    margin: 1px 0;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1px;
+}
+
+.toggle-sidebar-btn {
+  background-color: #ffc107; /* Yellow color for the button */
+  color: black;
+  border: none;
+  border-radius: 5px; /* Rounded corners similar to .expand-shrink-btn */
+  padding: 5px 10px; /* Add some padding for better clickability */
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center; /* Align icon and text vertically */
+  gap: 5px; /* Space between the icon and text */
+  margin: 0 10px; /* Adds small gaps to the left and right of the button */
+}
+
+.toggle-sidebar-btn:hover {
+  background-color: #e0a800; /* Darker shade of yellow for hover effect */
+}
+
+
+/* Modal styles */
+.pdf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.pdf-modal-content {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-scroll-container {
+  width: 80%;
+  height: 80%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Target internal elements of the PDF viewer */
+.react-pdf-viewer__canvas {
+  overflow: hidden !important;
+}
+
+.pdf-frame {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* .pdf-modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+} */
+
+/* Close button */
+.pdf-modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Blur effect on main content */
+.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #4a90e2;
+  border-radius: 5px;
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal overlay background */
+.selection-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0); /* Start transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500; /* Ensure it appears above other elements */
+  animation: fadeInBackground 0.5s ease-in-out forwards; /* Animation */
+}
+
+/* Modal content styling */
+.selection-modal-content {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 800px; /* Limit modal width */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+
+/* Fade-in animation for the background */
+@keyframes fadeInBackground {
+  0% {
+      background-color: rgba(255, 255, 255, 0); /* Fully transparent */
+  }
+  100% {
+      background-color: rgba(211, 211, 211, 0.5); /* Light gray with transparency */
+  }
+}
+
+/* Close button styling */
+.close-selection-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.close-selection-btn:hover {
+  background-color: #0056b3;
+}
+
+.selected-chapter {
+  text-align: left; /* Center the text */
+  /* margin: 20px 0; */
+  /* padding: 2px; */
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px; /* Increase font size */
+  color: #007bff; /* Blue color for text */
+  font-weight: bold; /* Make the text bold */
+}
+
+.selected-chapter:before {
+  content: "📖 "; 
+}
+
+.selected-chapter span {
+  color: #6c757d; 
+  font-style: italic; 
+}
+
+.selected-chapter strong {
+  color: #343a40; 
+  text-transform: capitalize; 
+}
+
+
+.feedback-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+
+.feedback-btn {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-btn:hover {
+  background-color: #c0c0c0;
+}
+
+.feedback-btn.positive-feedback {
+  background-color: #4caf50; /* Green for positive feedback */
+  color: white;
+}
+
+.feedback-btn.negative-feedback {
+  background-color: #f44336; /* Red for negative feedback */
+  color: white;
+}
+
+.chapter-container {
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  justify-content: space-between; /* Adds space between the items */
+  gap: 10px; /* Adds spacing between the elements */
+}
+
+.upload-section {
+  /* margin-top: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.upload-label {
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+
+.file-input {
+  margin-bottom: 10px;
+  display : none;
+}
+
+.custom-file-upload {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  /* font-size: 14px; */
+  font-size: 0.75rem;
+  text-align: center;
+  border: none;
+}
+
+.custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+.upload-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap : 5px;
+  /* top: -15px; */
+  /* border : 2px solid #4CAF50; */
+}
+
+
+.upload-btn {
+  padding: 5px 5px;
+  
+  background-color: yellowgreen;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.5rem;
+}
+
+.upload-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3); 
+  border-top: 4px solid #3498db; 
+  border-radius: 50%;
+  width: 0.3rem;
+  height: 0.3rem;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.upload-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.s3-manager {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.breadcrumb {
+  margin-bottom: 10px;
+}
+
+.breadcrumb .current-path {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.folder-container,
+.file-container {
+  margin: 20px 0;
+}
+
+.folder-list,
+.file-list {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.folder-item,
+.file-item {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.folder-item:hover,
+.file-item:hover {
+  background-color: #f0f0f0;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.pdf-viewer {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+h2 {
+  font-size: 1rem; /* default size */
+}
+
+
+.file-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.file-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.file-item-2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0px; /* Adds space between checkbox and file name */
+  /* padding: 4px 4px; */
+}
+
+.file-item-2:nth-child(odd) {
+  background-color: #f9f9f9; /* Light gray for odd rows */
+}
+
+.file-item-2:nth-child(even) {
+  background-color: #ffffff; /* White for even rows */
+}
+
+.file-list {
+  padding-left: 0; /* Removes any default padding of the list */
+}
+
+input[type="checkbox"] {
+  margin: 0; /* Ensures no extra margins around the checkbox */
+}
+
+.file-item-2 img {
+  margin-right: 0px; /* Adds spacing between file icon and name */
+}
+
+.no-files {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 4px 0;
+}
+
+/* Style for the Submit button */
+button.submit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 2px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+button.submit:hover {
+  background-color: #0056b3;
+}
+
+button.submit:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.bottom-section {
+  margin-top: 20px;
+}
+
+.bottom-section p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.file-actions button {
+  margin-bottom: 10px;
+}
+
+p {
+  display: inline-block;
+}
+
+.answer-format {
+  position: relative;
+  transition: all 0.3s ease; /* Smooth transition for shrinking */
+  z-index: 1; /* Default stacking */
+  transform: scale(0.9); /* Slight shrink when inactive */
+  opacity: 1; /* Visible by default */
+  pointer-events: auto; /* Interactive by default */
+}
+
+.answer-format.visible {
+  position: fixed; /* Float above other content */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%) scale(1); /* Full scale and center */
+  z-index: 1000; /* On top of everything */
+  opacity: 1; /* Fully visible */
+  pointer-events: auto; /* Interactive */
+  background: white; /* Optional: background to ensure focus */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: shadow for focus */
+  padding: 1em;
+  border-radius: 8px;
+  width: 50%; /* Makes it full width of the container */
+  height: 50%; /* Increase height to make it rectangular */
+}
+
+.answer-format.shrunk {
+  position: relative; /* Reset to flow position */
+  transform: scale(1); /* Reset scaling */
+  opacity: 1; /* Fully visible */
+  z-index: 1; /* Lower priority stacking */
+  pointer-events: auto; /* Keep interactive */
+}
+
+.text-input {
+  width: 100%; /* Makes it full width of the container */
+  height: 100%; /* Increase height to make it rectangular */
+  /* padding: 10px; */
+  font-size: 16px; /* Adjust font size for user convenience */
+  border-radius: 5px; /* Optional: rounded corners */
+  border: 1px solid #ccc; /* Optional: light border for styling */
+  resize: both; /* Allow the user to resize */
+}
+
+.answer-format-options {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  height: 100%; /* Full height of the viewport */
+  width: 100%; /* Full width of the viewport */
+  box-sizing: border-box; /* Include padding and borders in dimensions */
+  padding: 10px; /* Optional padding for spacing */
+}
+
+.file-upload {
+  padding : 10px;
+}

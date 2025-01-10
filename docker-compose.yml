@@ -1,0 +1,53 @@
+# version: '3.8'
+
+services:
+  flask-backend:
+    build: ./backend
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - AWS_ACCESS_KEY_ID=AKIAZPPGAAAZKBUEGKNS
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_DEFAULT_REGION=ap-south-1
+    networks:
+      - chatbot_network
+    container_name: flask-backend
+    depends_on:
+      - redis
+    ports:
+      - "5000:5000"
+
+  react-frontend:
+    build: ./frontend
+    container_name: react-frontend
+    ports:
+      - "3001:80"  # Mapping external port 3001 to internal port 80
+    networks:
+      - chatbot_network
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    environment:
+      - REDIS_SAVE=900 1
+      - REDIS_MAXMEMORY=256mb
+    networks:
+      - chatbot_network
+    ports:
+      - "6379:6379"  # Expose Redis port for inter-service communication
+    command: ["redis-server", "--appendonly", "yes"]
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - flask-backend
+      - react-frontend
+    networks:
+      - chatbot_network
+  
+networks:
+  chatbot_network:
+    driver: bridge
