@@ -6,9 +6,6 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - AWS_ACCESS_KEY_ID=AKIAZPPGAAAZKBUEGKNS
-      - AWS_SECRET_ACCESS_KEY=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
-      - AWS_DEFAULT_REGION=ap-south-1
     networks:
       - chatbot_network
     container_name: flask-backend

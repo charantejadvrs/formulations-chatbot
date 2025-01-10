@@ -368,6 +368,10 @@ client = vision.ImageAnnotatorClient()
 
 os.environ["OPENAI_API_KEY"] = keys.open_ai_keys["key_1"]
 
+os.environ["AWS_ACCESS_KEY_ID"] = keys.aws_keys["AWS_ACCESS_KEY_ID"]
+os.environ["AWS_SECRET_ACCESS_KEY"] = keys.aws_keys["AWS_SECRET_ACCESS_KEY"]
+os.environ["AWS_DEFAULT_REGION"] = keys.aws_keys["AWS_DEFAULT_REGION"]
+
 
 # app = Flask(__name__, static_folder='../frontend', static_url_path='/')
 app = Flask(__name__)
